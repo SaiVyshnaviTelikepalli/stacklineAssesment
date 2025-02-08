@@ -1,0 +1,129 @@
+:root {
+  /* CSS Grid Variables */
+  --product-min-width: 250px;
+  --header-min-height: 70px;
+  --chart-min-height: 600px;
+  --table-min-height: 700px;
+  /* Color Variables */
+  --light-gray: #f7f8fa;
+  --gray: #6c757d;
+  --container-background-color: white;
+  --primary-color: #000000;
+  --secondary-color: #000000;
+  --highlight-color: #000000;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  /* Border Variables */
+  --border-radius: 10px;
+  --border-vertical-width: 10px;
+  --border-double-vertical-width: 20px;
+  --border-horiz-width: 55px;
+  --thin-vertical-border: var(--border-vertical-width) solid var(--light-gray);
+  --thick-vertical-border: var(--border-double-vertical-width) solid var(--light-gray);
+  --horizontal-border: var(--border-horiz-width) solid var(--light-gray);
+}
+
+.grid-container {
+  display: grid;
+  min-height: 100%;
+  grid-template-columns: minmax(var(--product-min-width), 0.4fr) 1.3fr;
+  grid-auto-rows: minmax(var(--header-min-height), 0.15fr)
+    minmax(var(--chart-min-height), 1.4fr)
+    minmax(var(--table-min-height), max-content);
+  grid-template-areas: "header-container header-container" "product-container chart-container" "product-container table-container";
+  gap: 10px;
+  padding: 20px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+}
+
+/* Product Styles */
+.product-container {
+  grid-area: product-container;
+  background: var(--container-background-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0px 4px 6px var(--shadow-color);
+  padding: 20px;
+  text-align: center;
+}
+#product img {
+  height: auto;
+  width: 100%;
+  border-radius: var(--border-radius);
+}
+#title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+#subtitle {
+  font-weight: 300;
+  color: var(--gray);
+}
+.tags {
+  border: 2px solid var(--highlight-color);
+  border-radius: var(--border-radius);
+  padding: 5px 10px;
+  display: inline-block;
+  background: var(--highlight-color);
+  color: white;
+  font-weight: bold;
+}
+
+/* Header Styles */
+.header-container {
+  grid-area: header-container;
+  background: var(--container-background-color);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: 0px 4px 6px var(--shadow-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#header img {
+  max-height: var(--header-min-height);
+}
+
+/* Chart Styles */
+.chart-container {
+  grid-area: chart-container;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--container-background-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0px 4px 6px var(--shadow-color);
+  padding: 20px;
+}
+
+/* Table Styles */
+.table-container {
+  grid-area: table-container;
+  background: var(--container-background-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0px 4px 6px var(--shadow-color);
+  padding: 20px;
+}
+#table {
+  text-align: center;
+  width: 100%;
+  border-collapse: collapse;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table th {
+  padding: 15px;
+  font-weight: 600;
+  background: var(--primary-color);
+  color: white;
+  border-radius: var(--border-radius);
+}
+tbody td {
+  border-top: 2px solid var(--light-gray);
+  padding: 15px;
+}
+th:hover {
+  cursor: pointer;
+  background: var(--highlight-color);
+}
